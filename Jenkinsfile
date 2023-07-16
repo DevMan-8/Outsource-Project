@@ -5,8 +5,7 @@ pipeline {
             steps {
                 script {
                     // Assuming 'HoldingContainer' is the Docker Hub username and 'Admin@123' is the password
-                    docker.withRegistry('https://registry.hub.docker.com', 'DockerHub') {
-                        docker.login('HoldingContainer', 'Admin@123')
+                    sh 'docker login --username HoldingContainer --password Admin@123 '
                     }
                 }
             }
