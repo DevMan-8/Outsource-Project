@@ -6,7 +6,6 @@ pipeline {
                 script {
                     // Assuming 'HoldingContainer' is the Docker Hub username and 'Admin@123' is the password
                     sh 'docker login --username HoldingContainer --password Admin@123 '
-                    }
                 }
             }
         }
