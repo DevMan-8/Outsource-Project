@@ -5,7 +5,7 @@ pipeline {
             steps {
                 script {
                     // Assuming 'HoldingContainer' is the Docker Hub username and 'Admin@123' is the password
-                    sh 'sudo docker login --username checkmate123 --password Saadawais@123 '
+                    sh 'docker login --username checkmate123 --password Saadawais@123 '
                 }
             }
         }
