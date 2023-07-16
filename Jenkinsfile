@@ -16,7 +16,7 @@ pipeline {
             }
             steps {
                 script {
-                    docker.build('holdingcontainer/secondproject:latest', '.')
+                    docker.build('checkmate123/outsource:latest', '.')
                 }
             }
         }
@@ -27,7 +27,7 @@ pipeline {
             steps {
                 script {
                     docker.withRegistry('https://registry.hub.docker.com', 'DockerHub') {
-                        docker.image('holdingcontainer/secondproject:latest').push()
+                        docker.image('checkmate123/outsource:latest').push()
                     }
                 }
             }
@@ -36,7 +36,7 @@ pipeline {
             steps {
                 script {
                     docker.withRegistry('https://registry.hub.docker.com', 'DockerHub') {
-                        docker.image('holdingcontainer/secondproject:latest').run('-d --rm -p 81:80 --name nginx')
+                        docker.image('checkmate123/outsource:latest').run('-d --rm -p 81:80 --name nginx')
                     }
                 }
             }
