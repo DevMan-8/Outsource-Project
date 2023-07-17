@@ -26,8 +26,8 @@ pipeline {
             }
             steps {
                 script {
-                    docker.withRegistry('https://registry.hub.docker.com', 'DockerHub') {
-                        docker.image('checkmate123/outsource:latest').push()
+                    withDockerRegistry(credentialsId: 'DockerHub', url: 'https://index.docker.io/v1/') {
+                    sh 'docker push checkmate123/outsource:latest'
                     }
                 }
             }
