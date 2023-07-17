@@ -16,7 +16,7 @@ pipeline {
             }
             steps {
                 steps {
-                    sh 'docker build -t checkmate123/outsource:latest'
+                    sh 'docker build -t checkmate123/outsource:latest .'
                 }
             }
         }
