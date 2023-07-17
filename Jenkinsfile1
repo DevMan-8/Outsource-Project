@@ -1,0 +1,13 @@
+pipelines{
+    agent worknode
+    stages{
+        stage('Git Checkout'){
+            steps{
+                script{
+                git branch: 'main', url: 'https://github.com/DevMan-8/Outsource-Project.git'
+                }
+            }
+
+        }
+    }
+}
