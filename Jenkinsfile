@@ -34,7 +34,7 @@ pipeline {
         //}
         stage('CD Stage') {
             steps {
-                sh 'docker run -d --rm -p 81:80 --name nginx checkmate123/outsource:latest'
+                sh 'sudo docker run -d --rm -p 81:80 --name nginx checkmate123/outsource:latest'
             }
         }
     }
