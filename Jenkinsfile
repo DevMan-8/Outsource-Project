@@ -1,15 +1,15 @@
 pipeline {
     agent any
     stages {
-        stage('Login') {
-            agent {
-                label 'worknode'
-            }
-            steps {
+        //stage('Login') {
+          //  agent {
+            //    label 'worknode'
+           // }
+            //steps {
                     // Assuming 'HoldingContainer' is the Docker Hub username and 'Admin@123' is the password
-                sh 'docker login --username checkmate123 --password Saadawais@123'
-            }
-        }
+              //  sh 'docker login --username checkmate123 --password Saadawais@123'
+            //}
+       // }
         stage('Docker Build') {
             agent {
                 label 'workernode'
