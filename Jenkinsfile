@@ -35,7 +35,7 @@ pipeline {
         stage('CD Stage') {
             steps {
                 sh """
-                echo 'ubuntu' | sudo -S docker run -d --rm -p 81:80 --name nginx checkmate123/outsource:latest
+                echo 'jenkins' | sudo -S docker run -d --rm -p 81:80 --name nginx checkmate123/outsource:latest
                 """
             }
         }
