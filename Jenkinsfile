@@ -20,18 +20,18 @@ pipeline {
                 }
             }
         }
-        stage('Push') {
-            agent {
-                label 'worknode'
-            }
-            steps {
-                script {
-                    withDockerRegistry(credentialsId: 'DockerHub', url: 'https://index.docker.io/v1/') {
-                    sh 'docker push checkmate123/outsource:latest'
-                    }
-                }
-            }
-        }
+        //stage('Push') {
+          //  agent {
+            //    label 'worknode'
+            //}
+            //steps {
+              //  script {
+                //    withDockerRegistry(credentialsId: 'DockerHub', url: 'https://index.docker.io/v1/') {
+                  //  sh 'docker push checkmate123/outsource:latest'
+                    //}
+                //}
+            //}
+        //}
         stage('CD Stage') {
             steps {
                 script {
