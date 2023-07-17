@@ -2,29 +2,22 @@ pipeline {
     agent {
         label "worknode"
     }
-    
     stages {
-        stage('Checkout') {
+        stage('Build') {
             steps {
-                git 'https://github.com/DevMan-8/Outsource-Project.git'
-            }
-        }
-        
-        stage('Build Docker Image') {
-            steps {
+                git 'https://github.com/your/repo.git'
                 script {
-                    docker.withRegistry('', 'dockerhub') {
-                        def dockerImage = docker.build("nginx:${env.BUILD_NUMBER}", "-f Dockerfile .")
-                        dockerImage.push()
-                    }
+                    docker.build("nginx-image", "-f Dockerfile .")
                 }
             }
         }
-        
-        stage('Run Docker Container') {
+        stage('Deploy') {
             steps {
                 script {
-                    docker.run("-p 80:80 --name nginx-${env.BUILD_NUMBER} nginx:${env.BUILD_NUMBER}")
+                    docker.image('nginx-image').withRun('-p 80:80') { container ->
+                        // Perform any additional deployment steps here
+                        // For example, you could run tests or execute commands inside the container
+                    }
                 }
             }
         }
