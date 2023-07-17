@@ -3,6 +3,7 @@ pipeline {
     agent any
     stages {
         stage('Login') {
+            agent { label 'worknode'}
             steps {
                 script {
                     // Assuming 'HoldingContainer' is the Docker Hub username and 'Admin@123' is the password
@@ -12,7 +13,7 @@ pipeline {
         }
         stages {
         stage('Docker Build') {
-            // agent { label  'workernode1'}
+            agent { label  'workernode'}
             steps {
                 sh 'docker build -t checkmate123/outsource:latest .'
             }
