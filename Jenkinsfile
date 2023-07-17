@@ -6,10 +6,8 @@ pipeline {
                 label 'worknode'
             }
             steps {
-                script {
                     // Assuming 'HoldingContainer' is the Docker Hub username and 'Admin@123' is the password
-                    sh 'docker login --username checkmate123 --password Saadawais@123'
-                }
+                sh 'docker login --username checkmate123 --password Saadawais@123'
             }
         }
         stage('Docker Build') {
@@ -25,11 +23,7 @@ pipeline {
                 label 'worknode'
             }
             steps {
-                script {
-                    withDockerRegistry(credentialsId: 'DockerHub', url: 'https://index.docker.io/v1/') {
-                        sh 'docker push checkmate123/outsource:latest'
-                    }
-                }
+                sh 'docker push checkmate123/outsource:latest'
             }
         }
         stage('CD Stage') {
