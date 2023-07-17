@@ -15,8 +15,8 @@ pipeline {
                 label 'worknode'
             }
             steps {
-                script {
-                    docker.build('checkmate123/outsource:latest', '.')
+                steps {
+                    sh 'docker build -t checkmate123/outsource:latest'
                 }
             }
         }
