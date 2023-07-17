@@ -10,14 +10,11 @@ pipeline {
                 }
             }
         }
-        stage('Build') {
-            agent {
-                label 'worknode'
-            }
+        stages {
+        stage('Docker Build') {
+            // agent { label  'workernode1'}
             steps {
-                steps {
-                    sh 'touch test.txt'
-                }
+                sh 'docker build -t checkmate123/outsource:latest .'
             }
         }
         stage('Push') {
