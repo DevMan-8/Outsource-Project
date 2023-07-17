@@ -34,9 +34,8 @@ pipeline {
         //}
         stage('CD Stage') {
             steps {
-                script {
-                    docker.withRegistry('https://registry.hub.docker.com', 'DockerHub') {
-                        docker.image('checkmate123/outsource:latest').run('-d --rm -p 81:80 --name nginx')
+                steps {
+                    sh 'docker run -d --rm -p 81:80 --name nginx checkmate123/outsource:latest'
                     }
                 }
             }
