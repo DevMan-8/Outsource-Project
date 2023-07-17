@@ -1,24 +1,40 @@
 pipeline {
-    agent {
-        label "worknode"
-    }
+    
+    agent any
     stages {
+        //stage('Login') {
+        //    steps {
+         //       script {
+                    // Assuming 'HoldingContainer' is the Docker Hub username and 'Admin@123' is the password
+         //           sh 'docker login --username checkmate123 --password Saadawais@123 '
+             //   }
+           // }
+        //}
         stage('Build') {
+            agent {
+                label 'worknode'
+            }
             steps {
-                git 'https://github.com/your/repo.git'
                 script {
-                    docker.build("nginx-image", "-f Dockerfile .")
+                    docker.build('checkmate123/outsource:latest', '.')
                 }
             }
         }
-        stage('Deploy') {
+        //stage('Push') {
+          //  agent {
+            //    label 'worknode'
+            //}
+            //steps {
+              //  script {
+                //    withDockerRegistry(credentialsId: 'DockerHub', url: 'https://index.docker.io/v1/') {
+                  //  sh 'docker push checkmate123/outsource:latest'
+                    //}
+                //}
+            //}
+        //}
+        stage('CD Stage') {
             steps {
-                script {
-                    docker.image('nginx-image').withRun('-p 80:80') { container ->
-                        // Perform any additional deployment steps here
-                        // For example, you could run tests or execute commands inside the container
-                    }
-                }
+                sh 'docker run -d --rm -p 81:80 --name nginx checkmate123/outsource:latest'
             }
         }
     }
